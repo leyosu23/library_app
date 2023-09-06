@@ -4,9 +4,9 @@ import com.ysLee.springbootlibrary.dao.BookRepository;
 import com.ysLee.springbootlibrary.dao.CheckoutRepository;
 import com.ysLee.springbootlibrary.entity.Book;
 import com.ysLee.springbootlibrary.entity.Checkout;
-import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.time.LocalDate;
 import java.util.Optional;
 
