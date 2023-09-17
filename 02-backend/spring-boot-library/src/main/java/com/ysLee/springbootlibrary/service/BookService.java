@@ -24,14 +24,16 @@ public class BookService {
     }
 
     public Book checkoutBook (String userEmail, Long bookId) throws Exception {
+
         Optional<Book> book = bookRepository.findById(bookId);
 
         Checkout validateCheckout = checkoutRepository.findByUserEmailAndBookId(userEmail, bookId);
 
-        if (!book.isPresent() || validateCheckout != null || book.get().getCopiesAvailable() <= 0 ) {
+        if (!book.isPresent() || validateCheckout != null || book.get().getCopiesAvailable() <= 0) {
             throw new Exception("Book doesn't exist or already checked out by user");
         }
-        book.get().setCopiesAvailable(book.get().getCopiesAvailable() -1);
+
+        book.get().setCopiesAvailable(book.get().getCopiesAvailable() - 1);
         bookRepository.save(book.get());
 
         Checkout checkout = new Checkout(

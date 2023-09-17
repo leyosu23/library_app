@@ -5,8 +5,11 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class ExtractJWT {
+
     public static String payloadJWTExtraction(String token, String extraction) {
+
         token.replace("Bearer ", "");
+
         String[] chunks = token.split("\\.");
         Base64.Decoder decoder = Base64.getUrlDecoder();
 
@@ -28,7 +31,6 @@ public class ExtractJWT {
 
                 map.put(keyValue[0], keyValue[1]);
             }
-
         }
         if (map.containsKey(extraction)) {
             return map.get(extraction);
